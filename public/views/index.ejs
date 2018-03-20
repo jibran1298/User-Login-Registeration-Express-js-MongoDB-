@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+    <title>Registered Users</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">   List of Registered Users  </h1>
+        <div class="panel panel-default ">
+            <div class="panel-heading">
+                <h3 class="panel-title">User Database</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th> Full Name</th>
+                        <th> Username</th>
+                        <th> Email Address</th>
+                    </tr>   	
+        <% for(var i=0; i<user.length; i++) {%>
+            <tr>
+                      <td><span><%= user[i].fullname %></span></td>
+                       <td><span><%= user[i].uname %></span></td>
+                <td><span><%= user[i].email %></span></td>
+                      </tr>
+                    <% } %>
+                    
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script src="Bootstrap/js/bootstrap.js"></script>
+</html>
