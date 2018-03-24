@@ -41,6 +41,25 @@ app.get('/users',function(req,res)
         res.render(__dirname+'/public/views/index.ejs', {user: result})
       });
 });
+
+app.post('/login',function(req,res)
+{
+    var query = { fullname: "Faizs" };
+  db.collection("user").find(query).toArray(function(err, result) {
+    if (err) throw err;
+
+    if(result)
+    {
+        console.log("User Found");
+        console.log(result);
+    }
+    else
+    {
+        console.log("User Not Found");
+    }
+    
+    }) 
+});
 app.post('/register',function(req,res)
 {
     db.collection('user').save(req.body, (err, result) => {
