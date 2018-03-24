@@ -1,25 +1,15 @@
 var express = require('express');
-var MongoClient = require('mongodb').MongoClient;
 var app = express();
 var bodyParser = require('body-parser');
-var mongodb = require('mongodb');
-var MongoClient = mongodb.MongoClient;
+var database = require('./db.js');
 app.use('/Bootstrap', express.static(__dirname+'/public/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-var db;
-// Connect to the db
-MongoClient.connect("mongodb://localhost:27017/", function(err, client) {
-  if(err)
-  {
-    return console.log(err);
-  }
-  else
-  {
-    db = client.db('TestDb');
-    console.log("Database Connected");
-  }
-});
+
+//connect database
+database.connect();
+//connect database
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname+'/public/views/index.html');
 });

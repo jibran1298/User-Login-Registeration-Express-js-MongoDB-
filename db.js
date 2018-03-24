@@ -1,11 +1,22 @@
-var MongoClient = require('mongodb').MongoClient;
-
+module.exports={
+  
+  
+  connect : function (){
+    var db;
+    var mongodb = require('mongodb');
+    var MongoClient = mongodb.MongoClient;
 // Connect to the db
-MongoClient.connect("mongodb://localhost:27017/TestDb", function(err, db) {
-  if(err){
+MongoClient.connect("mongodb://localhost:27017/", function(err, client) {
+  if(err)
+  {
     return console.log(err);
   }
-else{
-    console.log("We are connected");
+  else
+  {
+    
+    db = client.db('TestDb');
+    console.log("Database Connected");
   }
 });
+  }
+}
